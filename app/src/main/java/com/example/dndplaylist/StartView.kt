@@ -19,8 +19,8 @@ class StartView : AppCompatActivity() {
         backgroundVideo.setVideoURI(videoUri)
         backgroundVideo.requestFocus()
         backgroundVideo.start()
-        backgroundVideo.setOnPreparedListener { mp ->
-            mp.isLooping = true
+        backgroundVideo.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.isLooping = true
         }
     }
 
