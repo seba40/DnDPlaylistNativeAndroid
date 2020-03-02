@@ -1,14 +1,13 @@
 package com.example.dndplaylist
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 
-
 class StartView : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +54,12 @@ class StartView : AppCompatActivity() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
+
+    fun openPlaylist(@Suppress("UNUSED_PARAMETER") v: View) {
+        val intent = Intent(this, PlaylistView::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }
