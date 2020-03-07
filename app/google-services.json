@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "869136947134",
-    "firebase_url": "https://dnd-playlist-android.firebaseio.com",
-    "project_id": "dnd-playlist-android",
-    "storage_bucket": "dnd-playlist-android.appspot.com"
+    "project_number": "798030846102",
+    "firebase_url": "https://dnd-playlist-android-app.firebaseio.com",
+    "project_id": "dnd-playlist-android-app",
+    "storage_bucket": "dnd-playlist-android-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:869136947134:android:8d91f9df24dc5ff2d48bef",
+        "mobilesdk_app_id": "1:798030846102:android:489bd228d507bb9ea68ab7",
         "android_client_info": {
           "package_name": "com.example.dndplaylist"
         }
       },
       "oauth_client": [
         {
-          "client_id": "869136947134-g44pq3c78hj3as0155s2ju9gjualsgk2.apps.googleusercontent.com",
+          "client_id": "798030846102-o0kniihegi6srfk6runql0au1jl79pai.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDqkUYE7srniP2igT0DTbQvT8YDUTcy3uI"
+          "current_key": "AIzaSyAZTi4-FI7M5PMMwt8gLgJrL_GIVestXIw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "869136947134-g44pq3c78hj3as0155s2ju9gjualsgk2.apps.googleusercontent.com",
+              "client_id": "798030846102-o0kniihegi6srfk6runql0au1jl79pai.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

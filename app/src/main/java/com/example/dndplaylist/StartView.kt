@@ -26,34 +26,11 @@ class StartView : AppCompatActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {
-            hideSystemUI()
+            AppController.hideSystemUI(window)
             val backgroundVideo = findViewById<VideoView>(R.id.backgroundVideo)
             backgroundVideo.requestFocus()
             backgroundVideo.start()
-
         }
-
-    }
-
-    private fun hideSystemUI() {
-        // Enables regular immersive mode.
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                // Set the content to appear under the system bars so that the
-                // content doesn't resize when the system bars hide and show.
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-    }
-
-    // Shows the system bars by removing all the flags
-    // except for the ones that make the content appear under the system bars.
-    private fun showSystemUI() {
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
 
     fun openPlaylist(@Suppress("UNUSED_PARAMETER") v: View) {
@@ -61,5 +38,4 @@ class StartView : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }
