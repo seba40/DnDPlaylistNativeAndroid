@@ -26,6 +26,7 @@ public class PlaylistView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist_view_layout);
+        // Initialize App Controller and get a reference to every UI element
         appController = new AppController();
         appController.InitializeController();
         progressBar = findViewById(R.id.progressBar);
@@ -34,8 +35,10 @@ public class PlaylistView extends AppCompatActivity {
         playlistButton = findViewById(R.id.playlistButton);
         playlistView = findViewById(R.id.playlistView);
         categoryView = findViewById(R.id.categoryView);
+        // Initialize the over-scroll effect
         OverScrollDecoratorHelper.setUpOverScroll(playlistView);
         OverScrollDecoratorHelper.setUpOverScroll(categoryView);
+        //Pass the map that holds UI elements to App Controller
         Map<String, View> layoutData = createLayoutData();
         appController.createAppData(layoutData);
     }

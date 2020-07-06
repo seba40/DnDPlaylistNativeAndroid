@@ -61,6 +61,7 @@ public class AppController {
     }
 
     void createAppData(final Map<String, View> layoutData) {
+        // Initialize a Firebase instance and get the song categories with their corresponding playlists from the database
         FirebaseFirestore databaseInstance = FirebaseFirestore.getInstance();
         databaseInstance.collection("SongCategories")
                 .get()
@@ -94,6 +95,7 @@ public class AppController {
     // TODO change setTextAppearance for keeping min API 21
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void createUI(final Map<String, View> layoutData) {
+        // Creates the buttons from the playlists data
         final Button buttonReference = (Button) layoutData.get("playlistButton");
         final LinearLayout categoryLayout = (LinearLayout) layoutData.get("categoryLayout");
         final LinearLayout playlistLayout = (LinearLayout) layoutData.get("playlistLayout");
@@ -120,6 +122,7 @@ public class AppController {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private Button createPlaylistButton(String label, Button buttonReference, LinearLayout layoutParent) {
+        // creates a button for a specific category or playlist
         Button newButton = new Button(buttonReference.getContext());
         newButton.setLayoutParams(buttonReference.getLayoutParams());
         newButton.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
