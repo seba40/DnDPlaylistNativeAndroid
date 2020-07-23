@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:theme="@style/AppTheme"
-    tools:context=".PlaylistView">
+    tools:context="playlist.PlaylistView">
 
     <ProgressBar
         android:id="@+id/progressBar"

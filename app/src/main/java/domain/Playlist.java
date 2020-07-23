@@ -1,14 +1,14 @@
-package com.example.dndplaylist;
+package domain;
 
 public class Playlist implements Comparable<Playlist> {
 
     private String name;
 
-    Playlist(String name) {
+    public Playlist(String name) {
         this.name = name;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

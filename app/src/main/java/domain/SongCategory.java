@@ -1,4 +1,4 @@
-package com.example.dndplaylist;
+package domain;
 
 import java.util.ArrayList;
 
@@ -7,16 +7,16 @@ public class SongCategory implements Comparable<SongCategory> {
     private String name;
     private ArrayList<Playlist> playlists;
 
-    SongCategory (String name, ArrayList<Playlist> playlists) {
+//    public SongCategory(String name, ArrayList<Playlist> playlists) {
+//        this.name = name;
+//        this.playlists = playlists;
+//    }
+
+    public SongCategory(String name) {
         this.name = name;
-        this.playlists = playlists;
     }
 
-    SongCategory(String name) {
-        this.name = name;
-    }
-
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -24,11 +24,11 @@ public class SongCategory implements Comparable<SongCategory> {
         this.name = name;
     }
 
-    ArrayList<Playlist> getPlaylists() {
+    public ArrayList<Playlist> getPlaylists() {
         return playlists;
     }
 
-    void setPlaylists(ArrayList<Playlist> playlists) {
+    public void setPlaylists(ArrayList<Playlist> playlists) {
         this.playlists = playlists;
     }
 

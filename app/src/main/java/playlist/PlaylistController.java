@@ -1,66 +1,52 @@
-package com.example.dndplaylist;
+package playlist;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dndplaylist.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.parceler.Parcel;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
-@Parcel
-public class AppController {
+import domain.Playlist;
+import domain.SongCategory;
+import player.PlayerView;
+
+public class PlaylistController extends AppCompatActivity {
     ArrayList<SongCategory> playlistCollection;
+    Context viewContext;
 
-    static void hideSystemUI(Window window) {
-        // Enables regular immersive mode.
-        View decorView = window.getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                // Set the content to appear under the system bars so that the
-                // content doesn't resize when the system bars hide and show.
-                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }
-
-    static void showSystemUI(Window window) {
-        View decorView = window.getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-    }
-
-    void InitializeController() {
+    PlaylistController(Context viewContext) {
         playlistCollection = new ArrayList<>();
+        this.viewContext = viewContext;
     }
 
-    public ArrayList<SongCategory> getPlaylistCollection() {
-        return playlistCollection;
-    }
+//    public ArrayList<SongCategory> getPlaylistCollection() {
+//        return playlistCollection;
+//    }
 
-    public void setPlaylistCollection(ArrayList<SongCategory> playlistCollection) {
-        this.playlistCollection = playlistCollection;
-    }
+//    public void setPlaylistCollection(ArrayList<SongCategory> playlistCollection) {
+//        this.playlistCollection = playlistCollection;
+//    }
 
-    void createAppData(final Map<String, View> layoutData) {
+    public void createAppData(final Map<String, View> layoutData) {
         // Initialize a Firebase instance and get the song categories with their corresponding playlists from the database
         FirebaseFirestore databaseInstance = FirebaseFirestore.getInstance();
         databaseInstance.collection("SongCategories")
@@ -75,7 +61,7 @@ public class AppController {
                                 SongCategory newCategory = new SongCategory((String) document.getData().get("CategoryName"));
                                 if (document.getData().get("Playlists") != null) {
                                     ArrayList<Playlist> newPlaylists = new ArrayList<>();
-                                    for (Object playlistData : (ArrayList) Objects.requireNonNull(document.getData().get("Playlists"))) {
+                                    for (Object playlistData : (ArrayList<?>) Objects.requireNonNull(document.getData().get("Playlists"))) {
                                         newPlaylists.add(new Playlist((String) playlistData));
                                     }
                                     Collections.sort(newPlaylists);
@@ -109,10 +95,15 @@ public class AppController {
                     public void onClick(View v) {
                         Objects.requireNonNull(layoutData.get("categoryView")).setVisibility(View.GONE);
                         Objects.requireNonNull(layoutData.get("playlistView")).setVisibility(View.VISIBLE);
-                        for (Playlist playlist : category.getPlaylists()) {
+                        for (final Playlist playlist : category.getPlaylists()) {
                             assert playlistLayout != null;
                             Button newPlaylistButton = createPlaylistButton(playlist.getName(), buttonReference, playlistLayout);
-                            // TODO add loading to player activity
+                            newPlaylistButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View vi) {
+                                    openPlayer(playlist.getName());
+                                }
+                            });
                         }
                     }
                 });
@@ -135,5 +126,14 @@ public class AppController {
         newButton.setText(label);
         layoutParent.addView(newButton);
         return newButton;
+    }
+
+    private void openPlayer(String playlistName) {
+        Intent intent = new Intent(viewContext, PlayerView.class);
+        Bundle b = new Bundle();
+        b.putString("playlistName", playlistName);
+        intent.putExtras(b);
+        viewContext.startActivity(intent);
+        finish();
     }
 }
