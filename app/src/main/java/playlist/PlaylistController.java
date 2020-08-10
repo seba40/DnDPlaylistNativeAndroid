@@ -29,6 +29,7 @@ import domain.Playlist;
 import domain.SongCategory;
 import player.PlayerView;
 
+// 96-97
 public class PlaylistController extends AppCompatActivity {
     ArrayList<SongCategory> playlistCollection;
     Context viewContext;
@@ -85,6 +86,8 @@ public class PlaylistController extends AppCompatActivity {
         final Button buttonReference = (Button) layoutData.get("playlistButton");
         final LinearLayout categoryLayout = (LinearLayout) layoutData.get("categoryLayout");
         final LinearLayout playlistLayout = (LinearLayout) layoutData.get("playlistLayout");
+        final Button backButton = (Button) layoutData.get("backButton");
+
         for (final SongCategory category : playlistCollection) {
             assert buttonReference != null;
             assert categoryLayout != null;
@@ -95,6 +98,8 @@ public class PlaylistController extends AppCompatActivity {
                     public void onClick(View v) {
                         Objects.requireNonNull(layoutData.get("categoryView")).setVisibility(View.GONE);
                         Objects.requireNonNull(layoutData.get("playlistView")).setVisibility(View.VISIBLE);
+                        assert backButton != null;
+                        backButton.setVisibility(View.VISIBLE);
                         for (final Playlist playlist : category.getPlaylists()) {
                             assert playlistLayout != null;
                             Button newPlaylistButton = createPlaylistButton(playlist.getName(), buttonReference, playlistLayout);
@@ -109,6 +114,16 @@ public class PlaylistController extends AppCompatActivity {
                 });
             }
         }
+        assert backButton != null;
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Objects.requireNonNull(layoutData.get("categoryView")).setVisibility(View.VISIBLE);
+                Objects.requireNonNull(layoutData.get("playlistView")).setVisibility(View.GONE);
+                backButton.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

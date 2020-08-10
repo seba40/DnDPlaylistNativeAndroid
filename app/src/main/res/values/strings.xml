@@ -3,4 +3,5 @@
     <string name="vignetteDescription">Vignette for the Start View</string>
     <string name="logo">App Logo</string>
     <string name="startButton">START</string>
+    <string name="logoDesc">Logo</string>
 </resources>

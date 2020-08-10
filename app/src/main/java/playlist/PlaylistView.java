@@ -26,6 +26,7 @@ public class PlaylistView extends AppCompatActivity {
     Button playlistButton;
     ScrollView playlistView;
     ScrollView categoryView;
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class PlaylistView extends AppCompatActivity {
         playlistButton = findViewById(R.id.playlistButton);
         playlistView = findViewById(R.id.playlistView);
         categoryView = findViewById(R.id.categoryView);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setVisibility(View.GONE);
 
         // Initialize the over-scroll effect
         OverScrollDecoratorHelper.setUpOverScroll(playlistView);
@@ -67,6 +71,7 @@ public class PlaylistView extends AppCompatActivity {
         layoutMap.put("playlistLayout", playlistLayout);
         layoutMap.put("categoryView", categoryView);
         layoutMap.put("playlistView", playlistView);
+        layoutMap.put("backButton", backButton);
         return layoutMap;
     }
 }
