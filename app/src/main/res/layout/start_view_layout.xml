@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme"
-    tools:context=".StartView">
+    tools:context="start.StartView">
 
     <VideoView
         android:id="@+id/backgroundVideo"
@@ -49,10 +49,11 @@
         android:background="@drawable/common_button"
         android:fontFamily="@font/optimus"
         android:includeFontPadding="false"
+        android:onClick="openPlaylist"
         android:text="@string/startButton"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/darkGrey"
+        android:textColor="@color/darkGreyButton"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

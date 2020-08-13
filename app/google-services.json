@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "798030846102",
+    "firebase_url": "https://dnd-playlist-android-app.firebaseio.com",
+    "project_id": "dnd-playlist-android-app",
+    "storage_bucket": "dnd-playlist-android-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798030846102:android:489bd228d507bb9ea68ab7",
+        "android_client_info": {
+          "package_name": "com.example.dndplaylist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798030846102-o0kniihegi6srfk6runql0au1jl79pai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZTi4-FI7M5PMMwt8gLgJrL_GIVestXIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798030846102-o0kniihegi6srfk6runql0au1jl79pai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
