@@ -29,7 +29,6 @@ import domain.Playlist;
 import domain.SongCategory;
 import player.PlayerView;
 
-// 96-97
 public class PlaylistController extends AppCompatActivity {
     ArrayList<SongCategory> playlistCollection;
     Context viewContext;
